@@ -1,12 +1,12 @@
-// const {slackSigningSecretkey ,tokenkey ,sourceChannelkey ,targetChannelkey} = require('./constants')
+ const {slackSigningSecretkey ,tokenkey ,sourceChannelkey ,targetChannelkey} = require('./constants')
 const { WebClient } = require('@slack/web-api');
 const { createEventAdapter } = require('@slack/events-api');
 const express = require('express');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
 
-// const slackSigningSecret = slackSigningSecretkey;
-// const token = tokenkey;
+ const slackSigningSecret = slackSigningSecretkey;
+ const token = tokenkey;
 const web = new WebClient(token);
 
 const slackEvents = createEventAdapter(slackSigningSecret);
@@ -63,8 +63,8 @@ slackEvents.on('message', async (event) => {
             return;
         }
 
-        // const sourceChannel = sourceChannelkey; // Replace with the source channel ID tech-products
-        //    const targetChannel = targetChannelkey;// Replace with the target channel ID
+         const sourceChannel = sourceChannelkey; // Replace with the source channel ID tech-products
+            const targetChannel = targetChannelkey;// Replace with the target channel ID
 
         if (event.channel === sourceChannel) {
             const messageText = event.text;
