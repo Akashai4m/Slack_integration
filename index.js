@@ -1,12 +1,10 @@
- const {slackSigningSecretkey ,tokenkey ,sourceChannelkey ,targetChannelkey} = require('./constants')
-const { WebClient } = require('@slack/web-api');
 const { createEventAdapter } = require('@slack/events-api');
 const express = require('express');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
 
- const slackSigningSecret = slackSigningSecretkey;
- const token = tokenkey;
+const slackSigningSecret = 'acbc6e2d869060c28865d0a1755f79ec';
+const token = 'xoxb-7259580826212-7388590360978-fRxi2bbcpIVWfnnLd7VDsVOp';
 const web = new WebClient(token);
 
 const slackEvents = createEventAdapter(slackSigningSecret);
@@ -63,8 +61,8 @@ slackEvents.on('message', async (event) => {
             return;
         }
 
-         const sourceChannel = sourceChannelkey; // Replace with the source channel ID tech-products
-            const targetChannel = targetChannelkey;// Replace with the target channel ID
+        const sourceChannel = 'C077K009JHZ'; // Replace with the source channel ID tech-products
+           const targetChannel = 'C077G5YRPD3';// Replace with the target channel ID
 
         if (event.channel === sourceChannel) {
             const messageText = event.text;
@@ -85,3 +83,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
 });
+
+
